@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+table,th,td{
+    border-collapse: collapse;
+    border: 1px #000000 solid;
+    padding: 10px;
+}
+
+
+th{
+    background-color: #cccccc;
+    text-align: right;
+}
+
+
+span{
+    color:red;
+}

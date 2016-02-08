@@ -95,7 +95,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <td>
                     <input type="text" name="name" value="<?php echo h($name) ?>">
                     <?php if($errors['name']) : ?>
-                        <?php echo '<br><span>'.h($errors['name']).'</span>' ?>
+                        <br><span><?php echo h($errors['name']) ?></span>
                     <?php endif ?>
                 </td>
             </tr>
@@ -104,7 +104,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <td>
                     <input type="text" name="title" value="<?php echo h($title) ?>">
                     <?php if($errors['title']) : ?>
-                        <?php echo '<br><span>'. h($errors['title']).'</span>' ?>
+                        <br><span><?php echo h($errors['title']) ?></span>
                     <?php endif ?>
                 </td>
             </tr>
@@ -113,7 +113,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <td>
                     <input type="text" name="email" value="<?php echo h($email) ?>">
                     <?php if($errors['email']) : ?>
-                        <?php echo '<br><span>'.h($errors['email']).'</span>' ?>
+                        <br><span><?php echo h($errors['email']) ?></span>
                     <?php endif ?>
                 </td>
             </tr>
@@ -122,7 +122,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <td>
                     <textarea name="message" cols="40" rows="5"><?php echo h($message) ?></textarea>
                     <?php if($errors['message']) : ?>
-                        <?php echo '<br><span>'.h($errors['message']).'</span>' ?>
+                        <br><span><?php echo h($errors['message']) ?></span>
                     <?php endif ?>
                 </td>
             </tr>
