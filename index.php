@@ -125,8 +125,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <td>
                     <textarea name="message" cols="40" rows="5"><?php echo h($message) ?></textarea>
                     <?php if($errors['message']) : ?>
-                        <br>
-                        <span><?php echo h($errors['message']) ?></span>
+                        <br><span><?php echo h($errors['message']) ?></span>
                     <?php endif ?>
                 </td>
             </tr>
