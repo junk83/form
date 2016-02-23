@@ -17,18 +17,30 @@ function h($s){
   return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
 }
 
-//カンマの全角変換関数
+//カンマの全角変換関数、ダブルクウォートのエスケープ
 function c_replace($s){
-    return preg_replace("/,/", "，", $s);
+    $s = str_replace(",", "，", $s);
+    return str_replace("\"", "\"\"", $s);
 }
+
+//行頭、末尾の半角・全角スペース除去
+function space_trim($s) {
+    // 行頭の半角、全角スペースを、空文字に置き換える
+    $s = preg_replace('/^[ 　]+/u', '', $s);
+    // 末尾の半角、全角スペースを、空文字に置き換える
+    $s = preg_replace('/[ 　]+$/u', '', $s);
+    return $s;
+}
+
+
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     //フォーム入力値の取得
-    $name = $_POST['name'];
-    $title = $_POST['title'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
+    $name = space_trim($_POST['name']);
+    $title = space_trim($_POST['title']);
+    $email = space_trim($_POST['email']);
+    $message = space_trim($_POST['message']);
 
     //バリデーション
     if($name == ''){
@@ -54,7 +66,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $fileName = "contact.csv";
 
         //1行データの生成
-        $data = date("Y/m/d H:i") . ",". c_replace($name) . ",". c_replace($title) . "," . c_replace($email) . "," . c_replace($message) . ",\n";
+        $data = "\"" . date("Y/m/d H:i"). "\"" . ",". "\"". c_replace($name) . "\"" . ",". "\"" . c_replace($title) . "\"" . "," . "\"" . c_replace($email) . "\"" . "," . "\"" . c_replace($message) . "\"" . ",\n";
 
         //ファイルオープン
         $fp = fopen($fileName, "a");
